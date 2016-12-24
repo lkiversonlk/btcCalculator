@@ -1,0 +1,49 @@
+extends layout
+
+block content
+
+    h1= "比特币套利计算器"
+    div
+
+        div
+            label
+                | 汇款到coinbase买比特币,在国内haobtc卖出
+            div
+                | coinbase收1.5%交易手续费,汇出比特币不收钱,haobtc收0.3%交易收费,提现收0.2%
+
+        div.well
+            div.form-group
+                label(for="initial_rmb")
+                   | 人民币总金额,目前每笔<=3万人民币
+                input.form-control#initial_rmb(placeholder="起始人民币")
+            div.form-group
+                label
+                   | 上银汇款汇率
+                input.form-control#shangyin_rate(placeholder="上银汇款汇率")
+            div.form-group
+                label
+                   | 上银汇款手续费(50元/每笔)
+                input.form-control#shangyin_fee(placeholder="上银手续费")
+            div.form-group
+                label
+                   | coinbase买入现价(美元)
+                input.form-control#coinbase_rate(placeholder="coinbase 买入价格")
+            div.form-group
+                label
+                   | Haobtc卖出现价
+                input.form-control#haobtc_sell(placeholder="haobtc 卖出价格")
+            div.form-group
+
+                button.form-control.btn-success.btn#calculate3
+                    | 计算
+            div.form-group
+                 input.form-control#get3(placeholder="得到人民币")
+            div.form-group
+                 input.form-control#get4(placeholder="收益率")
+    script.
+        data = !{JSON.stringify(data)}
+
+    script(src="/javascripts/jquery/dist/jquery.min.js")
+    script(src="/javascripts/bootstrap/dist/js/bootstrap.min.js")
+    link(rel='stylesheet', href='/javascripts/bootstrap/dist/css/bootstrap.min.css')
+    script(src="/javascripts/index.js")
