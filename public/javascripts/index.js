@@ -32,18 +32,12 @@ var inputs = {};
         //assert.ifError(input);
         inputs[name] = input;
     });
-//上银手续费50
 
+//上银手续费50
 inputs.shangyin_fee.value = 50;
 inputs.haobtc_sell.value = data.haobtc.ticker.sell;
 inputs.shangyin_rate.value = data.shangyin.result.rate * 1.0025;
-inputs.coinbase_rate.value = data.coinbase.datas.ticker.selldollar;
-//initial
-//inputs.shangyin_fee = 50;
-
-function ToUSA(RMB, buyRate, sellRate){
-    return (RMB/buyRate - 0.0005) * sellRate * 0.9851
-}
+inputs.coinbase_rate.value = parseFloat(data.coinbase.datas.ticker.selldollar) + 3;
 
 function To() {
     
@@ -56,7 +50,8 @@ btnCal3.onclick = function () {
     var coinbaseRate = inputs.coinbase_rate.value;
     var haobtcSell = inputs.haobtc_sell.value;
 
-    var gain = (startRMB - shangyinFee - 8 * shangyinRate) * 0.98116354 * haobtcSell / (shangyinRate * coinbaseRate);
+    //
+    var gain = (startRMB - shangyinFee - 8 * shangyinRate) * 0.997 * 0.998 * 0.9851 * haobtcSell / (shangyinRate * coinbaseRate);
     inputs.get3.value = gain;
     inputs.get4.value = (gain - startRMB)/startRMB;
 };
