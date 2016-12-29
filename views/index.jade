@@ -4,42 +4,61 @@ block content
 
     h1= "比特币套利计算器"
     div
-
-        div
-            label
-                | 汇款到coinbase买比特币,在国内haobtc卖出
-            div
-                | coinbase收1.5%交易手续费,汇出比特币不收钱,haobtc收0.3%交易收费,提现收0.2%
-
-        div.well
-            div.form-group
+        //div.well
+            | coinbase收1.5%交易手续费,汇出比特币不收钱,haobtc收0.3%交易收费,提现收0.2%
+        div.row
+            div.form-group.col-md-6
                 label(for="initial_rmb")
                    | 人民币总金额,目前每笔<=3万人民币
                 input.form-control#initial_rmb(placeholder="起始人民币")
-            div.form-group
-                label
-                   | 上银汇款汇率
-                input.form-control#shangyin_rate(placeholder="上银汇款汇率")
-            div.form-group
+            div.form-group.col-md-6
                 label
                    | 上银汇款手续费(50元/每笔)
                 input.form-control#shangyin_fee(placeholder="上银手续费")
-            div.form-group
+        div.row
+            div.form-group.col-md-6
                 label
                    | coinbase买入现价(美元)
-                input.form-control#coinbase_rate(placeholder="coinbase 买入价格")
-            div.form-group
+                input.form-control#coinbase_sell(placeholder="coinbase 买入价格")
+            div.form-group.col-md-6
+                label
+                    | coinbase卖出现价(美元)
+                input.form-control#coinbase_buy(placeholder="coinbase 买入价格")
+        div.row
+            div.form-group.col-md-6
+                label
+                    | Haobtc买入现价
+                input.form-control#haobtc_sell(placeholder="haobtc 买入价格")
+            div.form-group.col-md-6
                 label
                    | Haobtc卖出现价
-                input.form-control#haobtc_sell(placeholder="haobtc 卖出价格")
-            div.form-group
-
+                input.form-control#haobtc_buy(placeholder="haobtc 卖出价格")
+        div.row
+            div.form-group.col-md-6
+                label
+                    | 上银汇款汇率
+                input.form-control#shangyin_rate(placeholder="上银汇款汇率")
+            div.form-group.col-md-6
+                label
+                   |  -
                 button.form-control.btn-success.btn#calculate3
-                    | 计算
-            div.form-group
-                 input.form-control#get3(placeholder="得到人民币")
-            div.form-group
-                 input.form-control#get4(placeholder="收益率")
+                   | 计算
+            div.form-group.col-md-6
+                label
+                    | Bank CNY->USD->BTC->CNY
+                input.form-control#bank_profit(placeholder="收益率")
+            div.form-group.col-md-6
+                label
+                    | Debit CNY->USD->BTC->CNY
+                input.form-control#debit_profit(placeholder="收益率")
+            div.form-group.col-md-6
+                label
+                    | Debit CNY->BTC->USD
+                input.form-control#transfer_ratio(placeholder="转化汇率")
+            div.form-group.col-md-6
+                label
+                    | Debit USD->BTC->CNY
+                input.form-control#transfer_back_ratio(placeholder="转化汇率")
     script.
         data = !{JSON.stringify(data)}
 
