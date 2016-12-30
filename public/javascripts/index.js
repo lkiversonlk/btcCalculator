@@ -2,8 +2,6 @@
  * Created by liukan on 05/11/2016.
  */
 
-var btnCal1 = document.getElementById("calculate1");
-var btnCal2 = document.getElementById("calculate2");
 var btnCal3 = document.getElementById("calculate3");
 
 var inputs = {};
@@ -49,17 +47,17 @@ function calculate() {
     var haobtcSell = inputs.haobtc_sell.value;
     var haobtcBuy = inputs.haobtc_buy.value;
         //
-    var bank_gain = (startRMB - shangyinFee - 8 * shangyinRate) * 0.997 * 0.998 * 0.9851 * haobtcSell / (shangyinRate * coinbaseSell);
+    var bank_gain = (startRMB - shangyinFee - 8 * shangyinRate) * 0.997 * 0.998 * 0.9851 * haobtcBuy / (shangyinRate * coinbaseSell);
     inputs.bank_profit.value = (bank_gain)/startRMB;
 
-    var debit_gain = (startRMB - shangyinFee - 8 * shangyinRate) * 0.997 * 0.998 * 0.9601 * haobtcSell / (shangyinRate * coinbaseSell);
+    var debit_gain = (startRMB - shangyinFee - 8 * shangyinRate) * 0.997 * 0.998 * 0.9601 * haobtcBuy / (shangyinRate * coinbaseSell);
     inputs.debit_profit.value = (debit_gain)/startRMB;
 
-    var usd_transfered = (startRMB * 0.997 / haobtcBuy - 0.0005) * 0.9851 * coinbaseSell;
+    var usd_transfered = (startRMB * 0.997 / haobtcSell - 0.0005) * 0.9851 * coinbaseBuy;
     inputs.transfer_ratio.value = startRMB / usd_transfered;
     //var revert = (startRMB / )
 
-    var usd_back = 0.9851 / coinbaseSell * 0.997 * haobtcSell;
+    var usd_back = 0.9851 / coinbaseSell * 0.997 * haobtcBuy;
     inputs.transfer_back_ratio.value = usd_back;
 }
 
